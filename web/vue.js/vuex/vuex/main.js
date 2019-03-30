@@ -52,14 +52,36 @@ router.afterEach((to, from, next) => {
 
 const store = new Vuex.Store({
     state: {
-        count: 0
+        count: 0,
+        list: [1, 5, 8, 10, 30, 50]
     },
     mutations: {
-        increment(state) {
-            state.count ++
+        increment(state, n=1) {
+            state.count += n
         },
-        decrease(state) {
-            state.count --
+        decrease(state, n=1) {
+            state.count -= n
+        }
+    },
+    getters: {
+        filteredList: state => {
+            return state.list.filter(item => item < 10);
+        },
+        listCount: (state, getters) => {
+            return getters.filteredList.length;
+        }
+    },
+    actions: {
+        increase(context) {
+            context.commit('increment')
+        },
+        asyncIncrease(context) {
+            return new Promise(resolve => {
+                setTimeout(() => {
+                    context.commit('increment');
+                    resolve();
+                }, 1000)
+            });
         }
     }
 })
