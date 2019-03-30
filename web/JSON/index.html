@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+	<div id="demo">
+
+	</div>
+	<div id="demo2">
+
+	</div>
+	<script>
+		var obj = JSON.parse('{ "name":"runoob", "alexa":10000, "site":"www.runoob.com" }');
+		document.getElementById("demo").innerHTML = obj.name + "：" + obj.site;
+
+		var obj = { "name":"runoob", "alexa":10000, "site":"www.runoob.com"};
+		var myJSON = JSON.stringify(obj,null,10);
+		document.getElementById("demo2").innerHTML = myJSON;
+	</script>
+</body>
+</html>
