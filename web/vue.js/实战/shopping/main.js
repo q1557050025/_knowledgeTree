@@ -58,6 +58,17 @@ const store = new Vuex.Store({
 	mutations: {
 		setProductList(state, data) {
 			state.productList = data;
+		},
+		addCart(state, id) {
+			const isAdded = state.cartList.find(item => item.id);
+			if(isAdded) {
+				isAdded.count ++;
+			} else {
+				state.cartList.push({
+					id: id,
+					count: 1
+				})
+			}
 		}
 	},
 	actions: {
