@@ -1,36 +1,42 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <div>
-      <p>
-        If Element is successfully added to this project, you'll see an
-        <code v-text="'<el-button>'"></code>
-        below
-      </p>
-      <el-button>el-button</el-button>
-    </div>
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+	<div id="app">
+		<el-container>
+			<el-header><h1>Element学习</h1></el-header>
+			<el-container>
+				<el-aside width="240px" style="background-color: rgb(238, 241, 246)">
+					<ul>
+						<li><h2><router-link to="/Layout">Layout布局</router-link></h2></li>
+						<li><h2><router-link to="/Container">Container布局</router-link></h2></li>
+						<li><h2><router-link to="/Icon">Icon</router-link></h2></li>
+						<li><h2><router-link to="/Button">Button</router-link></h2></li>
+						<li><h2><router-link to="/Radio">Radio</router-link></h2></li>
+						<li><h2><router-link to="/Checkbox">Checkbox</router-link></h2></li>
+						<li><h2><router-link to="/Input">Input</router-link></h2></li>
+						<li><h2><router-link to="/InputNumber">InputNumber</router-link></h2></li>
+						<li><h2><router-link to="/Select">Select</router-link></h2></li>
+					</ul>
+				</el-aside>
+				<el-main>
+					<router-view></router-view>
+				</el-main>
+			</el-container>
+		</el-container>
+	</div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
 export default {
-  name: 'app',
-  components: {
-    HelloWorld
-  }
+	components: {
+	}
 }
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="less">
+	* {
+		list-style: none;
+	}
+	a {
+		text-decoration: none;
+	}
 </style>
