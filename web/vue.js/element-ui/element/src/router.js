@@ -11,6 +11,13 @@ import Checkbox from './views/Checkbox.vue'
 import Input from './views/Input.vue'
 import InputNumber from './views/InputNumber.vue'
 import Select from './views/Select.vue'
+import Cascader from './views/Cascader.vue'
+import Switch from './views/Switch.vue'
+import Slider from './views/Slider.vue'
+import TimePicker from './views/TimePicker.vue'
+import DatePicker from './views/DatePicker.vue'
+import Upload from './views/Upload.vue'
+import Rate from './views/Rate.vue'
 
 export default new Router({
   mode: 'history',
@@ -18,11 +25,27 @@ export default new Router({
   routes: [
     {
       path: '*',
-      redirect: '/Layout'
+      redirect: '/Button'
     },
     {
       path: '/Layout',
       component: Layout
+    },
+    {
+      path: '/Rate',
+      component: Rate
+    },
+    {
+      path: '/Upload',
+      component: Upload
+    },
+    {
+      path: '/DatePicker',
+      component: DatePicker
+    },
+    {
+      path: '/TimePicker',
+      component: TimePicker
     },
     {
       path: '/Container',
@@ -55,6 +78,18 @@ export default new Router({
     {
       path: '/Select',
       component: Select
+    },
+    {
+      path: '/Cascader',
+      component: Cascader
+    },
+    {
+      path: '/Switch',
+      component: Switch
+    },
+    {
+      path: '/Slider',
+      component: Slider
     },
   ]
 })
