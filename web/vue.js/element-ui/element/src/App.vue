@@ -20,7 +20,11 @@
 						<li><h2><router-link to="/TimePicker">TimePicker</router-link></h2></li>
 						<li><h2><router-link to="/DatePicker">DatePicker</router-link></h2></li>
 						<li><h2><router-link to="/Upload">Upload</router-link></h2></li>
+						<li><h2><router-link to="/ColorPicker">ColorPicker</router-link></h2></li>
 						<li><h2><router-link to="/Rate">Rate</router-link></h2></li>
+						<li><h2><router-link to="/Transfer">Transfer</router-link></h2></li>
+						<li><h2><router-link to="/Form">Form</router-link></h2></li>
+						<li><h2><router-link to="/Table">Table</router-link></h2></li>
 					</ul>
 				</el-aside>
 				<el-main>

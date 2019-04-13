@@ -18,6 +18,10 @@ import TimePicker from './views/TimePicker.vue'
 import DatePicker from './views/DatePicker.vue'
 import Upload from './views/Upload.vue'
 import Rate from './views/Rate.vue'
+import ColorPicker from './views/ColorPicker.vue'
+import Transfer from './views/Transfer.vue'
+import Form from './views/Form.vue'
+import Table from './views/Table.vue'
 
 export default new Router({
   mode: 'history',
@@ -30,6 +34,22 @@ export default new Router({
     {
       path: '/Layout',
       component: Layout
+    },
+    {
+      path: '/Table',
+      component: Table
+    },
+    {
+      path: '/Form',
+      component: Form
+    },
+    {
+      path: '/Transfer',
+      component: Transfer
+    },
+    {
+      path: '/ColorPicker',
+      component: ColorPicker
     },
     {
       path: '/Rate',
