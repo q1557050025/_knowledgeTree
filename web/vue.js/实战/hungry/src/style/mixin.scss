@@ -1,28 +1,25 @@
-$blue: #3190e8;
-$bg: #e4e4e4;
-$fc: #fff;
+@import './params.scss';
 
 @mixin wh($width, $height) {
 	width: $width;
 	height: $height;
 }
 
-//上下左右居中
-@mixin center {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%)
-}
-
-//上下居中
-@mixin ct {
-	position: absolute;
-	top: 50%;
-	transform: translateY(-50%)
-}
-
-@mixin sc($size, $color) {
+@mixin sclh($size, $color,$lineHeight:$size) {
 	font-size: $size;
 	color: $color;
+	line-height: $lineHeight;
+}
+
+@mixin fj($type:space-between) {
+	display: flex;
+	justify-content: $type;
+}
+
+@function rem2px($rem) {
+	@return $rem * 23.4375px;
+}
+
+@mixin devborder() {
+	border: 1px solid red;
 }

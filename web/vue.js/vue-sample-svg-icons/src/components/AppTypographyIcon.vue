@@ -1,6 +1,6 @@
 <template>
   <section>
-      <icon-base icon-name="moon"><icon-moon /></icon-base>
+      <icon-base icon-name="moon" icon-color="#999"><icon-moon /></icon-base>
       <icon-base icon-name="write"><icon-write /></icon-base>
       <icon-base icon-name="image"><icon-image /></icon-base>
       <icon-base icon-name="garbage"><icon-garbage /></icon-base>

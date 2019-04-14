@@ -9,12 +9,17 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/Home'
+      redirect: '/CityList'
     },
     {
-      path: '/Home',
-      name: 'Home',
-      component: () => import('./views/Home.vue')
-    }
+      path: '/CityList',
+      name: 'CityList',
+      component: () => import('./views/CityList.vue')
+    },
+    {
+      path: '/City/:cityid',
+      name: 'City',
+      component: () => import('./views/City.vue')
+    },
   ]
 })

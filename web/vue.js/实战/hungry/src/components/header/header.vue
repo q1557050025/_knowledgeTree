@@ -25,19 +25,16 @@ export default {
 	@import "../../style/mixin.scss";
 	#header {
 		background-color: $blue;
-		position: fixed;
-		z-index: 100;
-		left: 0;
-		top: 0;
-		@include wh(100%, 1.95rem)
+		@include wh(375px, 45px);
+		@include fj;
 	}
 
 	.header-login {
-		@include sc(0.65rem, #fff);
-		@include ct;
-		right: .55rem;
+		@include sclh(15px, #fff, 45px);
+		margin-right: rem2px(0.55);
 		&-span {
 			color: #fff;
+			@include wh(65px, 20px);
 		}
 	}
 </style>

@@ -1,17 +1,17 @@
 <template>
   <div id="app">
     <router-view/>
+    <svg-icon></svg-icon>
   </div>
 </template>
-
-<style lang="scss">
-  @import './style/common.scss';
-
-	.router-fade-enter-active, .router-fade-leave-active {
-	  	transition: opacity .3s;
+<script>
+import svgIcon from './components/icon/svg'
+export default {
+  components: {
+    svgIcon,
   }
-  
-	.router-fade-enter, .router-fade-leave-active {
-	  	opacity: 0;
-	}
+}
+</script>
+<style lang="scss">
+@import './style/common.scss';
 </style>
