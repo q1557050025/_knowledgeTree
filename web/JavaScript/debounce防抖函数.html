@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<style>
+	body{
+		background-color: orange;
+		height: 1454px;
+	}
+	</style>
+</head>
+
+<body>
+	<script>
+		// 防抖动函数
+		function debounce(func, wait, immediate = false) {
+			var timeout;
+			return function (cc = 1, bb = 2) {
+				var context = this,
+					args = arguments;
+				var later = function () {
+					timeout = null;
+					console.log(context)
+					console.log("args",args)
+					if (!immediate) func.apply(context, args);
+				};
+				var callNow = immediate && !timeout;
+				console.log('callNow', callNow)
+				clearTimeout(timeout);
+				timeout = setTimeout(later, wait);
+				if (callNow) func.apply(context, args);
+			};
+		};
+
+		function test(n) {
+			console.log(n)
+			console.log(1)
+		}
+		// 绑定监听
+		window.addEventListener('scroll',debounce(test, 1000))
+
+
+
+		// function test(a,b,c) {
+		// 	var  args = arguments
+		// 	console.log(args)
+		// }
+		// test(1,2,3)
+	</script>
+</body>
+
+</html>

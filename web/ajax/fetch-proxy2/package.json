@@ -1,0 +1,17 @@
+{
+  "name": "fetch-proxy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "fetch.js",
+  "dependencies": {
+    "webpack-cli": "^3.3.0",
+    "webpack": "^4.30.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+
+	<script>
+		const createCheckBox = function(arr) {
+			let fragment = document.createDocumentFragment()
+			let checkBoxs = {} 
+			//循环生成checkbox
+			for(let i = 0;i<arr.length;i++){
+				checkBoxs[i] = document.createElement('input')
+				checkBoxs[i].setAttribute('type', 'checkbox')
+				checkBoxs[i].setAttribute('id', arr[i])
+				checkBoxs[i].checked = false
+				let label = document.createElement('label')
+				label.setAttribute('for',arr[i])
+				label.appendChild(checkBoxs[i])
+				let text = document.createTextNode(arr[i])
+				label.appendChild(text)
+				fragment.appendChild(label)
+			}
+			//全选
+			checkBoxs[0].addEventListener('change',() => {
+				for(let i = 1; i < arr.length; i++){
+					let boolen = checkBoxs[i].checked
+					console.log(i,  boolen)
+					checkBoxs[i].checked = !boolen
+				}
+			})
+			//所有元素选中,则自动勾选全选,有一个没勾选,则取消
+			let checks = []
+			for(let i = 1; i < arr.length; i++) {
+				checkBoxs[i].addEventListener('change',() => {
+					for(let i = 1; i < arr.length; i++) {
+						checks[i] = checkBoxs[i].checked
+						let boolen = checks.every((item,index) => {
+							if(index === 0) return true
+							return item
+						})
+						checkBoxs[0].checked = boolen
+					}
+				})
+			}
+			return fragment
+		}	
+
+		var checkBoxsArr = ["全选","选项1","选项2","选项3","选项4","选项5","选项6"]
+
+		var cb = createCheckBox(checkBoxsArr)
+		document.body.appendChild(cb);
+		console.log(createCheckBox.fragment)
+	</script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+			var list = []
+			var childList = []
+			var nodeList = []
+			var heightCount = 0
+			var maxHeight = 1000
+
+			function handle(node) {
+				let nodeHeight = node.scrollHeight
+
+				let boolen = node.scrollHeigh < maxHeight || node.children.length === 0 
+				
+				if(boolen) {
+					list.push(node)
+				}else {
+					for(let i = 0; i < node.children.length; i++) {
+						handle(node.children[i])
+					}
+				}
+			}
+			var obj = document.getElementsByTagName('object')
+			console.log(obj.getAttribute('tagName'))
+			var btn = document.getElementById('btn')
+
+			btn.addEventListener('click', () => {
+				handle(document.body)
+				handleList(list)
+				console.log(list)
+			})
+
+			function handleList(arr) {
+				for(let i = 0;i < arr.length; i++) {
+					var height = arr[i].scrollHeight
+					heightCount += height
+					if(heightCount > maxHeight) {
+						nodeList.push(childList)
+						childList = [arr[i]]
+						heightCount = 0
+					}else {
+						childList.push(arr[i])
+					}
+					if(i === arr.length - 1) {
+						if(childList) {
+							nodeList.push(childList)
+							chidList = []
+						}
+					}
+				}
+			}
+		</script>
+</body>
+</html>
