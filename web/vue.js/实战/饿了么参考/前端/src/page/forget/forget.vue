@@ -109,31 +109,31 @@
             },
             //重置密码
             async resetButton(){
-                if (!this.phoneNumber) {
-                    this.showAlert = true;
-                    this.alertText = '请输入正确的账号';
-                    return
-                }else if(!this.oldPassWord){
-                    this.showAlert = true;
-                    this.alertText = '请输入旧密码';
-                    return
-                }else if(!this.newPassWord){
-                    this.showAlert = true;
-                    this.alertText = '请输入新密码';
-                    return
-                }else if(!this.confirmPassWord){
-                    this.showAlert = true;
-                    this.alertText = '请输确认密码';
-                    return
-                }else if(this.newPassWord !== this.confirmPassWord){
-                    this.showAlert = true;
-                    this.alertText = '两次输入的密码不一致';
-                    return
-                }else if(!this.mobileCode){
-                    this.showAlert = true;
-                    this.alertText = '请输验证码';
-                    return
-                }
+                // if (!this.phoneNumber) {
+                //     this.showAlert = true;
+                //     this.alertText = '请输入正确的账号';
+                //     return
+                // }else if(!this.oldPassWord){
+                //     this.showAlert = true;
+                //     this.alertText = '请输入旧密码';
+                //     return
+                // }else if(!this.newPassWord){
+                //     this.showAlert = true;
+                //     this.alertText = '请输入新密码';
+                //     return
+                // }else if(!this.confirmPassWord){
+                //     this.showAlert = true;
+                //     this.alertText = '请输确认密码';
+                //     return
+                // }else if(this.newPassWord !== this.confirmPassWord){
+                //     this.showAlert = true;
+                //     this.alertText = '两次输入的密码不一致';
+                //     return
+                // }else if(!this.mobileCode){
+                //     this.showAlert = true;
+                //     this.alertText = '请输验证码';
+                //     return
+                // }
                 // 发送重置信息
                 let res = await changePassword(this.phoneNumber, this.oldPassWord, this.newPassWord, this.confirmPassWord, this.mobileCode);
                 if (res.message) {
