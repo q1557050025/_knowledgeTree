@@ -119,7 +119,9 @@
             ]),
             async initData(){
                 if (this.userInfo) {
+                    console.log(this.userInfo.user_id)
                     this.hongbaoList = await getHongbaoNum(this.userInfo.user_id);
+                    console.log(this.hongbaoList);
                     this.showLoading = false;
                 }
             }

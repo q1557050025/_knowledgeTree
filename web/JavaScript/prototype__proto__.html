@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var obj = {a: 1}
+		console.log("obj:",obj)
+		var prototype = Object.getPrototypeOf(obj)
+		console.log("prototype:",prototype)
+		console.log("obj.__proto__",obj.__proto__)
+		console.log("is?:", obj.__proto__ === prototype)
+	</script>
+</body>
+</html>
