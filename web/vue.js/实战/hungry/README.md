@@ -1,29 +1,7 @@
 # hungry
 
-## Project setup
-```
-npm install
-```
+* 需要node.js, webpack
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+* npm i 安装依赖
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+* npm run serve 运行本地服务器

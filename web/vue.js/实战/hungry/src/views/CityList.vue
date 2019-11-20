@@ -1,8 +1,13 @@
+<!--
+ * @Description: In User Settings Edit
+ * @Author: your name
+ * @Date: 2019-04-14 21:20:46
+ * @LastEditTime: 2019-08-20 20:04:30
+ * @LastEditors: Please set LastEditors
+ -->
 <template>
   <div>
-    <Header singin-up="home">
-      <span slot="logo"  class="header-logo">饿了么</span>
-    </Header>
+    <Header :headerOptions="headerOptions"></Header>
     <nav class="city-nav">
       <div class="city_tip">
         <span>当前定位城市:</span>
@@ -22,32 +27,37 @@
         <h4 class="hot_city_title">热门城市</h4>
         <router-link 
           v-for="(hotCity, index) in hotCities" :key="index"
-          tag="li"
+          tag="li" 
           :to="'/city/'+ hotCity.id">
             {{hotCity.name}}
           </router-link>
       </ul>
     </section>
-    <section class="city_group">
+    <van-list 
+			v-model="loading"
+			:finished="finished"
+			finished-text="没有更多了"
+      @load="onLoad"
+      :immediate-check="false"
+      class="city_group">
       <ul 
-        v-for="(cities, key) in sortedCityGroup" :key="key"
+        v-for="(cities, index) in asyncCityGroup" :key="index"
         class="city_group_list">
-          <h4 class="city_group_title">{{key}}
-            <span v-if="key === 'A'">(按字母顺序排列)</span>
+          <h4 class="city_group_title">{{asyncCityGroup[index].key}}
+            <span v-if="asyncCityGroup[index].key === 'A'">(按字母顺序排列)</span>
           </h4>
           <router-link 
             v-for="(city, index) in cities" :key="index"    
             :to="'/city/'+ city.id"
             tag="li">{{city.name}}</router-link>
       </ul>
-    </section>
+    </van-list>
   </div>
 </template>
 
 <script>
 import {hotCities, cityGroup, cityGuess} from '../serviece/getData.js'
 import Header from '../components/header/header.vue'
-
 export default {
   name: 'home',
   components: {
@@ -55,36 +65,60 @@ export default {
   },
   data() {
     return {
-      cityGroup: {},
+      cityGroup: null,
       hotCities: [],
       cityGuess: '',
       cityGuessId: '',
+      headerOptions: {logo:{title:true}, signUp:true},
+      loading: false,
+      finished: false,
+      asyncCityGroup:[],
     }
   },
-  computed: {
+  methods: {
+		//vant list 滚动条滚动时调用, 异步渲染新的地址
+    onLoad() {
+			for (let i = 0; i < 3; i++) {
+				this.asyncCityGroup = this.cityGroup.slice(0,this.asyncCityGroup.length+1)
+			}
+      // 加载状态结束
+			this.loading = false;
+			//   // 数据全部加载完成
+      if (this.asyncCityGroup[this.asyncCityGroup.length - 1].key === 'Z') {
+        this.finished = true;
+      }
+      
+      console.log(this.asyncCityGroup)
+		},
     sortedCityGroup() {
-      let res = {}
+      let res = []
       for(let i = 65 ; i <= 90; i++) {
         if(this.cityGroup[String.fromCharCode(i)]) {
-          res[String.fromCharCode(i)] = this.cityGroup[String.fromCharCode(i)]
+          res[i-65] = this.cityGroup[String.fromCharCode(i)]
+          res[i-65].key = String.fromCharCode(i)
+        }else{
+          res[i-65] = []
+          res[i-65].key = String.fromCharCode(i)
         }
       }
-      return res
-    }
+      this.cityGroup = res
+    },
+  },
+  computed: {
   },
   mounted() {
     hotCities().then(res => {
       this.hotCities = res
-      console.log(this.hotCities)
+      console.log(res,"qqqqqq")
     })
     cityGuess().then(res => {
       this.cityGuess = res.name
       this.cityGuessId = res.id
-      console.log(this.cityGuess, this.cityGuessId)
     })
     cityGroup().then(res => {
       this.cityGroup = res
-      console.log(this.cityGroup)
+      this.sortedCityGroup()
+      this.onLoad()
     })
   }
 }
@@ -114,12 +148,6 @@ export default {
     }
   }
 
-  .header-logo {
-    @include sclh(16px, #fff, 45px);
-    @include wh(54px, 16.5px);
-    margin-left: rem2px(.4);
-    font-weight: 400;
-  }
   .city-nav {
     .city_tip {
       @include fj;

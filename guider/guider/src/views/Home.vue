@@ -121,14 +121,16 @@ export default {
       })
       .then(function(response) {
         that.list.push(add)
-        that.form = {}
+        that.form = {
+          date: new Date(),
+          count: 0
+        }
         return response.json();
       })
       .then(function(json) {
-        console.log("parsed json: ", json);
       })
-      .catch(function(ex) {
-        console.log("parsing failed: ", ex);
+      .catch(function() {
+
       });
     }
   }

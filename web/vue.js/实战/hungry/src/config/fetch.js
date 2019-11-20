@@ -28,7 +28,7 @@ export default async (url ='', data = {}, type = 'GET') => {
 			value: JSON.stringify(data)
 		})
 	}
-
+	console.log(url)
 	try{
 		const response = await fetch(url)
 		const responseJson = await response.json()
