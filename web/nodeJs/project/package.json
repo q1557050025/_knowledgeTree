@@ -8,7 +8,7 @@
   },
   "devDependencies": {
     "request": "^2.88.0",
-    "webpack": "^4.29.6",
+    "webpack": "^5.75.0",
     "webpack-dev-server": "^3.2.1"
   },
   "scripts": {
